@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whait Service | وايت سيرفس لصيانة وتجديد الأجهزة المنزلية</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#1E56A0',
+                            600: '#0F4C81',
+                            700: '#0c3d69',
+                            800: '#092f52',
+                        },
+                        brandOrange: {
+                            400: '#fb923c',
+                            500: '#F97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { transform: 'scale(1)', boxShadow: '0 0 15px rgba(249, 115, 22, 0.6)' },
+                            '50%': { transform: 'scale(1.05)', boxShadow: '0 0 30px rgba(249, 115, 22, 0.9)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+        }
+        .hotline-neon {
+            background: linear-gradient(135deg, #FF6B00 0%, #F97316 100%);
+            box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.4);
+        }
+        .bg-pattern {
+            background-image: radial-gradient(#1E56A0 0.75px, transparent 0.75px);
+            background-size: 16px 16px;
+            opacity: 0.05;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-brandOrange-500 selection:text-white flex flex-col min-h-screen">
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-md border-b border-slate-100 py-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between gap-4">
+                
+                <!-- Logo & Brand Name (Right Side) -->
+                <a href="#home" onclick="showMainHome()" class="flex items-center gap-3 group flex-shrink-0">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-brandBlue-600 to-brandBlue-500 flex items-center justify-center text-white text-2xl sm:text-3xl shadow-lg group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl sm:text-3xl font-black text-brandBlue-600 tracking-wider">Whait Service</span>
+                        <span class="text-xs sm:text-sm text-brandOrange-600 font-bold">صيانة وتجديد الأجهزة المنزلية</span>
+                    </div>
+                </a>
+
+                <!-- Nav Links (Desktop Middle) -->
+                <nav class="hidden lg:flex items-center gap-5 font-bold text-sm text-slate-700">
+                    <a href="#home" onclick="showMainHome()" class="hover:text-brandBlue-600 transition-colors">الرئيسية</a>
+                    <a href="#booking-section" onclick="showMainHome()" class="hover:text-brandBlue-600 transition-colors">حجز صيانة</a>
+                    <a href="#appliances-section" onclick="showMainHome()" class="hover:text-brandBlue-600 transition-colors">الأجهزة المنزلية</a>
+                    <a href="#faq-section" onclick="showMainHome()" class="hover:text-brandBlue-600 transition-colors">أسئلة شائعة</a>
+                    <a href="#privacy-section" onclick="showMainHome()" class="hover:text-brandBlue-600 transition-colors">سياسة الخصوصية</a>
+                    <a href="#contact-section" onclick="showMainHome()" class="hover:text-brandBlue-600 transition-colors">تواصل معنا</a>
+                </nav>
+
+                <!-- Header Left Side: Extra Large Prominent Hotline Header -->
+                <div class="flex items-center gap-3 flex-shrink-0">
+                    <a href="tel:19081" class="hotline-neon text-white px-4 sm:px-6 py-2 rounded-2xl flex items-center gap-3 font-black shadow-xl transition-all hover:scale-105">
+                        <i class="fa-solid fa-headset text-2xl sm:text-4xl animate-bounce"></i>
+                        <div class="flex flex-col text-right">
+                            <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-orange-100">الخط الساخن السريع</span>
+                            <span class="text-2xl sm:text-4xl font-black tracking-widest dir-ltr leading-none">19081</span>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN HOME VIEW CONTAINER -->
+    <div id="main-content-view" class="flex-grow">
+
+        <!-- HERO SECTION -->
+        <section id="home" class="relative bg-gradient-to-b from-brandBlue-50 via-white to-slate-50 py-10 md:py-16 overflow-hidden">
+            <div class="absolute inset-0 bg-pattern pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Hero Text Content -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
+                        <div class="inline-flex items-center gap-2 bg-brandBlue-100 text-brandBlue-700 px-4 py-1.5 rounded-full text-sm font-bold shadow-sm">
+                            <i class="fa-solid fa-wrench text-brandOrange-500"></i>
+                            <span>صيانة وإصلاح وتجديد شامل</span>
+                        </div>
+                        
+                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
+                            خدمات صيانة وتجديد <br class="hidden sm:inline" />
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandBlue-600 to-brandOrange-500">جميع الأجهزة المنزلية بأعلى كفاءة ودقة</span>
+                        </h1>
+                        
+                        <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                            نقدم لك أفضل خيارات الصيانة السريعة والتجديد المتكامل للثلاجات، الغسالات، الديب فريزر، الأفران والمجففات بأعلى دقة فنية وقطع غيار عالية الجودة مع الضمان الخاص بمركزنا.
+                        </p>
+
+                        <!-- Giant Call-to-Action Hotline Box -->
+                        <div class="p-6 bg-white border-2 border-brandBlue-100 rounded-3xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 my-6">
+                            <div class="text-right">
+                                <p class="text-xs font-bold text-slate-500">اتصل بنا الآن للحصول على دعم فني فورى</p>
+                                <p class="text-2xl font-black text-brandBlue-600">الخط الساخن المباشر</p>
+                            </div>
+                            <a href="tel:19081" class="w-full sm:w-auto bg-brandOrange-500 hover:bg-brandOrange-600 text-white font-black text-4xl px-8 py-4 rounded-2xl flex items-center justify-center gap-4 shadow-lg hover:shadow-orange-200 transition-all transform hover:-translate-y-1 dir-ltr">
+                                <i class="fa-solid fa-phone-volume text-3xl animate-bounce"></i>
+                                <span>19081</span>
+                            </a>
+                        </div>
+
+                        <!-- Direct Stats/Trust Badges -->
+                        <div class="grid grid-cols-3 gap-3 pt-2 text-center">
+                            <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
+                                <i class="fa-solid fa-truck-fast text-brandOrange-500 text-2xl mb-1"></i>
+                                <p class="font-bold text-slate-800 text-xs sm:text-sm">خدمة منزلية</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
+                                <i class="fa-solid fa-shield-halved text-brandBlue-500 text-2xl mb-1"></i>
+                                <p class="font-bold text-slate-800 text-xs sm:text-sm">ضمان على الصيانة</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
+                                <i class="fa-solid fa-screwdriver-wrench text-emerald-500 text-2xl mb-1"></i>
+                                <p class="font-bold text-slate-800 text-xs sm:text-sm">تجديد ودهان متكامل</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hero Visual Image / Graphics -->
+                    <div class="lg:col-span-5 relative flex justify-center">
+                        <div class="relative w-full max-w-md">
+                            <div class="absolute -top-6 -left-6 w-72 h-72 bg-brandOrange-400/20 rounded-full blur-3xl"></div>
+                            <div class="absolute -bottom-6 -right-6 w-72 h-72 bg-brandBlue-500/20 rounded-full blur-3xl"></div>
+                            
+                            <div class="relative bg-white p-4 rounded-3xl shadow-2xl border border-slate-100 overflow-hidden group">
+                                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" 
+                                     alt="صيانة الأجهزة المنزلية" 
+                                     class="w-full h-80 sm:h-96 object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                                     onerror="this.src='https://placehold.co/600x800/0F4C81/FFFFFF?text=Whait+Service+Maintenance'">
+                                <div class="absolute bottom-8 right-8 left-8 bg-slate-900/85 backdrop-blur-md p-4 rounded-2xl text-white border border-white/10">
+                                    <p class="font-bold text-sm text-brandOrange-400">فنيون متخصصون</p>
+                                    <p class="text-xs text-slate-200 mt-0.5">فحص ودقة عالية بأحدث أدوات التشخيص</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECOND SECTION DIRECTLY: QUICK WHATSAPP BOOKING FORM (ثاني قسم مباشرة) -->
+        <section id="booking-section" class="py-12 bg-white relative z-20 border-y border-slate-100">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                
+                <div class="bg-gradient-to-br from-slate-900 via-brandBlue-800 to-brandBlue-600 rounded-3xl shadow-2xl p-6 sm:p-10 text-white relative overflow-hidden">
+                    
+                    <!-- Decorative Icon -->
+                    <div class="absolute -bottom-10 -left-10 text-white/5 text-9xl pointer-events-none">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+
+                    <div class="text-center mb-8">
+                        <span class="bg-brandOrange-500/20 text-brandOrange-400 border border-brandOrange-500/40 px-4 py-1 rounded-full text-xs font-bold inline-block mb-3">
+                            حجز سريع ودقيق
+                        </span>
+                        <h2 class="text-2xl sm:text-4xl font-black">نموذج حجز طلب صيانة أجهزة</h2>
+                        <p class="text-slate-300 text-sm sm:text-base mt-2">
+                            قم بملء البيانات التالية ليتم تحويلك مباشرة للواتساب وسيقوم فريق الدعم بالرد عليك فوراً
+                        </p>
+                    </div>
+
+                    <form id="whatsappBookingForm" onsubmit="handleWhatsAppSubmit(event)" class="space-y-5 relative z-10">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            
+                            <!-- Customer Name -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-200 mb-2">اسم العملاء بالكامل *</label>
+                                <div class="relative">
+                                    <input type="text" id="custName" required placeholder="أدخل اسمك الكريم" 
+                                           class="w-full bg-slate-800/80 border border-slate-600 focus:border-brandOrange-500 rounded-xl py-3 px-4 text-white text-sm focus:outline-none transition-colors">
+                                    <i class="fa-solid fa-user absolute left-4 top-3.5 text-slate-400"></i>
+                                </div>
+                            </div>
+
+                            <!-- Customer Phone -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-200 mb-2">رقم الموبايل *</label>
+                                <div class="relative">
+                                    <input type="tel" id="custPhone" required placeholder="01xxxxxxxx" 
+                                           class="w-full bg-slate-800/80 border border-slate-600 focus:border-brandOrange-500 rounded-xl py-3 px-4 text-white text-sm focus:outline-none transition-colors dir-ltr text-right">
+                                    <i class="fa-solid fa-phone absolute left-4 top-3.5 text-slate-400"></i>
+                                </div>
+                            </div>
+
+                            <!-- Appliance Type -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-200 mb-2">نوع الجهاز المطلوب صيانته/تجديده *</label>
+                                <select id="custAppliance" required class="w-full bg-slate-800 border border-slate-600 focus:border-brandOrange-500 rounded-xl py-3 px-4 text-white text-sm focus:outline-none transition-colors">
+                                    <option value="" disabled selected>اختر نوع الجهاز</option>
+                                    <option value="ثلاجة منزلية">ثلاجة منزلية</option>
+                                    <option value="غسالة ملابس أوتوماتيك">غسالة ملابس أوتوماتيك</option>
+                                    <option value="ديب فريزر">ديب فريزر</option>
+                                    <option value="مجفف ملابس">مجفف ملابس (دراير)</option>
+                                    <option value="غسالة أطباق">غسالة أطباق</option>
+                                    <option value="بوتاجاز / فرن">بوتاجاز أو فرن</option>
+                                    <option value="سخان مياه">سخان مياه</option>
+                                </select>
+                            </div>
+
+                            <!-- Location / Area -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-200 mb-2">المنطقة / المحافظة *</label>
+                                <select id="custLocation" required class="w-full bg-slate-800 border border-slate-600 focus:border-brandOrange-500 rounded-xl py-3 px-4 text-white text-sm focus:outline-none transition-colors">
+                                    <option value="" disabled selected>اختر نطاق الخدمة</option>
+                                    <option value="جمهورية مصر العربية - القاهرة">جمهورية مصر العربية - القاهرة</option>
+                                    <option value="جمهورية مصر العربية - الجيزة">جمهورية مصر العربية - الجيزة</option>
+                                    <option value="دولة الكويت - محافظة حولي (منطقة الزهراء)">دولة الكويت - محافظة حولي (الزهراء)</option>
+                                    <option value="مناطق أخرى بمصر أو الكويت">مناطق أخرى</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <!-- Fault Description -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-200 mb-2">وصف العطل أو طلب التجديد *</label>
+                            <textarea id="custDesc" rows="3" required placeholder="اذكر تفاصيل العطل (مثل: الثلاجة لا تبرد، الغسالة تطرد ماء، تجديد ورش كامل...)" 
+                                      class="w-full bg-slate-800/80 border border-slate-600 focus:border-brandOrange-500 rounded-xl py-3 px-4 text-white text-sm focus:outline-none transition-colors"></textarea>
+                        </div>
+
+                        <!-- Form Submit Button -->
+                        <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-extrabold text-lg py-4 rounded-xl shadow-lg flex items-center justify-center gap-3 transition-all transform hover:scale-[1.01]">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>حجز طلب صيانة عبر واتساب (01102670999)</span>
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PROMINENT INDEPENDENT DISCLAIMER BANNER IN THE MIDDLE OF THE PAGE -->
+        <section class="py-8 bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-slate-900 shadow-md">
+            <div class="max-w-6xl mx-auto px-4 text-center">
+                <div class="inline-flex items-center gap-2 bg-slate-900 text-amber-400 px-4 py-1.5 rounded-full text-xs font-bold mb-2 shadow-inner">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>تنويه وتصريح صريح للمستخدمين</span>
+                </div>
+                <h3 class="text-lg sm:text-2xl font-black mb-1">مركز صيانة وتجديد أجهزة منزلية مستقل</h3>
+                <p class="text-xs sm:text-base font-bold max-w-4xl mx-auto leading-relaxed">
+                    نحن في <strong>Whait Service</strong> نؤكد عملنا كمركز صيانة وتجديد تقني مستقل تماماً لكافة الأجهزة المنزلية، ولسنا تابعين أو ممثلين لأي توكيل تجاري أو أي شركة مصنعة. نقدم خدمات الإصلاح والتجديد الفني بصورة حرّة ومستقلة.
+                </p>
+            </div>
+        </section>
+
+        <!-- ALL HOME APPLIANCES SECTION -->
+        <section id="appliances-section" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <span class="text-brandOrange-500 font-extrabold text-sm uppercase tracking-wide">خدمات متخصصة</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-1">قسم صيانة وتجديد الأجهزة المنزلية</h2>
+                    <p class="text-slate-600 mt-3 text-base">اضغط على أي جهاز للانتقال إلى الصفحة الخاصة به والتفاصيل الكاملة وحجز الخدمة</p>
+                </div>
+
+                <!-- Appliance Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- 1. Refrigerators -->
+                    <div onclick="openAppliancePage('refrigerators')" class="bg-gradient-to-b from-slate-50 to-white rounded-3xl p-6 border border-slate-200 hover:border-brandBlue-500 shadow-sm hover:shadow-xl transition-all cursor-pointer group flex flex-col justify-between">
+                        <div>
+                            <div class="w-16 h-16 rounded-2xl bg-blue-100 text-brandBlue-600 flex items-center justify-center text-3xl mb-6 group-hover:bg-brandBlue-600 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-temperature-arrow-down"></i>
+                            </div>
+                            <span class="text-xs font-bold text-brandOrange-500 bg-orange-50 px-3 py-1 rounded-full">تجديد وصيانة</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-2 group-hover:text-brandBlue-600 transition-colors">صيانة وتجديد الثلاجات</h3>
+                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                علاج أعطال التبريد وتسريب الفريون، تغيير الكمبروسر، وإعادة الرش والتجديد الخارجي بالكامل.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-brandBlue-600 font-bold text-sm">
+                            <span>عرض التفاصيل وحجز صيانة</span>
+                            <i class="fa-solid fa-arrow-left group-hover:-translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- 2. Washing Machines -->
+                    <div onclick="openAppliancePage('washing-machines')" class="bg-gradient-to-b from-slate-50 to-white rounded-3xl p-6 border border-slate-200 hover:border-brandBlue-500 shadow-sm hover:shadow-xl transition-all cursor-pointer group flex flex-col justify-between">
+                        <div>
+                            <div class="w-16 h-16 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-3xl mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-soap"></i>
+                            </div>
+                            <span class="text-xs font-bold text-brandOrange-500 bg-orange-50 px-3 py-1 rounded-full">تجديد وصيانة</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-2 group-hover:text-indigo-600 transition-colors">الغسالات الأوتوماتيك</h3>
+                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                إصلاح البرامج، كارتات التحكم، طلمبات الطرد، المحركات والتجديد الخارجي لمنع الصدأ.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-indigo-600 font-bold text-sm">
+                            <span>عرض التفاصيل وحجز صيانة</span>
+                            <i class="fa-solid fa-arrow-left group-hover:-translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- 3. Deep Freezers -->
+                    <div onclick="openAppliancePage('deep-freezers')" class="bg-gradient-to-b from-slate-50 to-white rounded-3xl p-6 border border-slate-200 hover:border-brandBlue-500 shadow-sm hover:shadow-xl transition-all cursor-pointer group flex flex-col justify-between">
+                        <div>
+                            <div class="w-16 h-16 rounded-2xl bg-cyan-100 text-cyan-600 flex items-center justify-center text-3xl mb-6 group-hover:bg-cyan-600 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-snowflake"></i>
+                            </div>
+                            <span class="text-xs font-bold text-brandOrange-500 bg-orange-50 px-3 py-1 rounded-full">تجديد وصيانة</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-2 group-hover:text-cyan-600 transition-colors">صيانة الديب فريزر</h3>
+                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                صيانة الفريزر الرأسي والأفقي، معالجة تكوين الثلج، ضبط الثرموستات واستبدال المكونات التالفة.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-cyan-600 font-bold text-sm">
+                            <span>عرض التفاصيل وحجز صيانة</span>
+                            <i class="fa-solid fa-arrow-left group-hover:-translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- 4. Dryers -->
+                    <div onclick="openAppliancePage('dryers')" class="bg-gradient-to-b from-slate-50 to-white rounded-3xl p-6 border border-slate-200 hover:border-brandBlue-500 shadow-sm hover:shadow-xl transition-all cursor-pointer group flex flex-col justify-between">
+                        <div>
+                            <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-3xl mb-6 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-wind"></i>
+                            </div>
+                            <span class="text-xs font-bold text-brandOrange-500 bg-orange-50 px-3 py-1 rounded-full">تجديد وصيانة</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-2 group-hover:text-amber-600 transition-colors">صيانة المجففات (الدراير)</h3>
+                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                علاج مشاكل التسخين والدوران، صيانة الحساسات والهيتر وتجديد هيكل المجفف بأعلى جودة.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-amber-600 font-bold text-sm">
+                            <span>عرض التفاصيل وحجز صيانة</span>
+                            <i class="fa-solid fa-arrow-left group-hover:-translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- 5. Dishwashers -->
+                    <div onclick="openAppliancePage('dishwashers')" class="bg-gradient-to-b from-slate-50 to-white rounded-3xl p-6 border border-slate-200 hover:border-brandBlue-500 shadow-sm hover:shadow-xl transition-all cursor-pointer group flex flex-col justify-between">
+                        <div>
+                            <div class="w-16 h-16 rounded-2xl bg-teal-100 text-teal-600 flex items-center justify-center text-3xl mb-6 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-utensils"></i>
+                            </div>
+                            <span class="text-xs font-bold text-brandOrange-500 bg-orange-50 px-3 py-1 rounded-full">تجديد وصيانة</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-2 group-hover:text-teal-600 transition-colors">غسالات الأطباق</h3>
+                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                معالجة الانسداد، طلمبات السحب والصرف، رشاشات المياه وإصلاح مشاكل تسخين المياه.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-teal-600 font-bold text-sm">
+                            <span>عرض التفاصيل وحجز صيانة</span>
+                            <i class="fa-solid fa-arrow-left group-hover:-translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- 6. Cookers & Ovens -->
+                    <div onclick="openAppliancePage('cookers')" class="bg-gradient-to-b from-slate-50 to-white rounded-3xl p-6 border border-slate-200 hover:border-brandBlue-500 shadow-sm hover:shadow-xl transition-all cursor-pointer group flex flex-col justify-between">
+                        <div>
+                            <div class="w-16 h-16 rounded-2xl bg-orange-100 text-brandOrange-600 flex items-center justify-center text-3xl mb-6 group-hover:bg-brandOrange-600 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-fire-burner"></i>
+                            </div>
+                            <span class="text-xs font-bold text-brandOrange-500 bg-orange-50 px-3 py-1 rounded-full">تجديد وصيانة</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-2 group-hover:text-brandOrange-600 transition-colors">البوتاجازات والأفران</h3>
+                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                تنظيف وصيانة الفواني، صمامات الأمان، إشعال ذاتي، تغيير مفصلات الأبواب وتجديد الهيكل.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-brandOrange-600 font-bold text-sm">
+                            <span>عرض التفاصيل وحجز صيانة</span>
+                            <i class="fa-solid fa-arrow-left group-hover:-translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- 7. Water Heaters -->
+                    <div onclick="openAppliancePage('heaters')" class="bg-gradient-to-b from-slate-50 to-white rounded-3xl p-6 border border-slate-200 hover:border-brandBlue-500 shadow-sm hover:shadow-xl transition-all cursor-pointer group flex flex-col justify-between md:col-span-2 lg:col-span-1">
+                        <div>
+                            <div class="w-16 h-16 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-3xl mb-6 group-hover:bg-rose-600 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-droplet font-black"></i>
+                            </div>
+                            <span class="text-xs font-bold text-brandOrange-500 bg-orange-50 px-3 py-1 rounded-full">تجديد وصيانة</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-2 group-hover:text-rose-600 transition-colors">صيانة وتجديد السخانات</h3>
+                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                صيانة سخانات الكهرباء والغاز، تغيير الهيتر وثرموستات الحرارة، معالجة التسريبات وصمامات الأمان.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-rose-600 font-bold text-sm">
+                            <span>عرض التفاصيل وحجز صيانة</span>
+                            <i class="fa-solid fa-arrow-left group-hover:-translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PROMINENT INDEPENDENT MAINTENANCE CENTER DISCLAIMER IN THE MIDDLE OF THE PAGE (في منتصف الصفحة) -->
+        <section class="py-12 bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-slate-900 shadow-xl relative my-6">
+            <div class="max-w-5xl mx-auto px-4 text-center">
+                <div class="inline-flex items-center gap-2 bg-slate-900 text-amber-400 px-5 py-2 rounded-full text-xs font-bold mb-3 shadow-md">
+                    <i class="fa-solid fa-shield-halved text-sm"></i>
+                    <span>تنويه هام وإقرار شفافية</span>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-black mb-3">مركز صيانة وتجديد أجهزة منزلية مستقل</h3>
+                <p class="text-sm sm:text-base font-extrabold max-w-4xl mx-auto leading-relaxed text-slate-900">
+                    تنويه هام: نحن في <strong>Whait Service</strong> نؤكد عملنا كمركز صيانة وتجديد تقني مستقل تماماً لجميع الأجهزة المنزلية، ولا نتبع أي جهة أو شركة مصنعة، ونقدم خدماتنا بقطع غيار عالية الجودة مع الضمان الخاص بمركزنا.
+                </p>
+            </div>
+        </section>
+
+        <!-- WHY WHAIT SERVICE & REFURBISHMENT PROCESS -->
+        <section class="py-16 bg-slate-900 text-white relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="text-brandOrange-400 font-bold text-xs uppercase tracking-wider">لماذا نحن الخيار الأفضل؟</span>
+                        <h2 class="text-3xl sm:text-4xl font-black mt-2 leading-tight">خدمة تجديد وإعادة هيكلة الأجهزة المنزلية القديمة</h2>
+                        <p class="text-slate-300 text-base mt-4 leading-relaxed">
+                            في مركز <strong>Whait Service</strong> لا نكتفي بإصلاح الأعطال الكهربائية أو الميكانيكية فحسب، بل نقدم خدمة تجديد متكاملة تشمل رش وتجميل الهيكل الخارجي، إزالة الصدأ، واستبدال الأجزاء التالفة ليعود جهازك كالجديد تماماً.
+                        </p>
+
+                        <div class="space-y-4 mt-8">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-brandOrange-500/20 text-brandOrange-400 flex items-center justify-center text-xl flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-white">فحص دقيق وتقنيات حديثة</h4>
+                                    <p class="text-slate-400 text-sm">تشخيص موثوق للعطل بدون تكاليف إضافية غير ضرورية.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-brandOrange-500/20 text-brandOrange-400 flex items-center justify-center text-xl flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-paint-roller"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-white">تجديد ودهان بفرن حراري</h4>
+                                    <p class="text-slate-400 text-sm">معالجة البارومة والصدأ وإعادة طلاء الأجهزة بخامات عالية المقاومة.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-brandOrange-500/20 text-brandOrange-400 flex items-center justify-center text-xl flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-clock font-black"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-white">سرعة في التنفيذ والالتزام</h4>
+                                    <p class="text-slate-400 text-sm">إنجاز أعمال الصيانة والتجديد في أسرع وقت ممكن مع اختبار الكفاءة.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" 
+                             alt="تجديد الأجهزة المنزلية" 
+                             class="rounded-3xl shadow-2xl border-2 border-slate-700 w-full object-cover h-96"
+                             onerror="this.src='https://placehold.co/600x800/1E56A0/FFFFFF?text=Whait+Service+Refurbishment'">
+                        
+                        <div class="absolute -bottom-6 -right-6 bg-brandOrange-500 text-white p-6 rounded-2xl shadow-xl hidden sm:block">
+                            <p class="text-3xl font-black">100%</p>
+                            <p class="text-xs font-bold">اهتمام بالدقة والجودة</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FAQ SECTION (سؤال وجواب) -->
+        <section id="faq-section" class="py-16 bg-slate-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                
+                <div class="text-center mb-12">
+                    <span class="text-brandBlue-600 font-bold text-xs uppercase tracking-wide">إجابات استفساراتكم</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-1">قسم الأسئلة الشائعة (سؤال وجواب)</h2>
+                    <p class="text-slate-600 text-sm mt-2">إليك إجابات حول أبرز التساؤلات المتعلقة بإنهاء خدمات الصيانة والتجديد لدينا</p>
+                </div>
+
+                <!-- Accordion List -->
+                <div class="space-y-4">
+                    
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                        <button onclick="toggleFaq('faq1')" class="w-full text-right p-5 font-bold text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors">
+                            <span class="text-base sm:text-lg">هل مركز Whait Service تابع لأي وكيل أو شركة مصنعة؟</span>
+                            <i id="faq1-icon" class="fa-solid fa-chevron-down text-brandOrange-500 transition-transform"></i>
+                        </button>
+                        <div id="faq1" class="hidden p-5 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
+                            لا، مركز Whait Service هو مركز صيانة وتجديد مستقل تماماً يقدم خدمات فنية متخصصة للأجهزة المنزلية، ولسنا تابعين أو ممثلين لأي توكيل أو شركة مصنعة أو أي جهة أخرى.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                        <button onclick="toggleFaq('faq2')" class="w-full text-right p-5 font-bold text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors">
+                            <span class="text-base sm:text-lg">ما هي خدمة التجديد الشامل للأجهزة المنزلية؟</span>
+                            <i id="faq2-icon" class="fa-solid fa-chevron-down text-brandOrange-500 transition-transform"></i>
+                        </button>
+                        <div id="faq2" class="hidden p-5 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
+                            خدمة التجديد تشمل إزالة الصدأ والبارومة من هيكل الغسالات والثلاجات، إعادة دهان الجهاز بألوان ومواد فرن حرارية عالية المقاومة، واختبار وتغيير المكونات الميكانيكية ليعود الجهاز للعمل بكفاءة وشكل جديد تماماً.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                        <button onclick="toggleFaq('faq3')" class="w-full text-right p-5 font-bold text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors">
+                            <span class="text-base sm:text-lg">كيف يمكنني طلب خدمة الصيانة فوراً؟</span>
+                            <i id="faq3-icon" class="fa-solid fa-chevron-down text-brandOrange-500 transition-transform"></i>
+                        </button>
+                        <div id="faq3" class="hidden p-5 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
+                            يمكنك الاتصال مباشرة على الخط الساخن الموحد <strong>19081</strong>، أو استخدام نموذج الحجز السريع عبر الواتساب على الرقم <strong>01102670999</strong>، أو الاتصال بأحد أرقام الموبايل المتاحة بالموقع.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                        <button onclick="toggleFaq('faq4')" class="w-full text-right p-5 font-bold text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors">
+                            <span class="text-base sm:text-lg">هل تتم الصيانة في المنزل أم في المركز؟</span>
+                            <i id="faq4-icon" class="fa-solid fa-chevron-down text-brandOrange-500 transition-transform"></i>
+                        </button>
+                        <div id="faq4" class="hidden p-5 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
+                            أغلب الأعطال يتم إصلاحها فوراً في منزل العميل. وفي حالات التجديد الشامل أو الرش الكامل أو الاعطال المعقدة للغاية، يتم نقل الجهاز إلى المركز وإعادته فور انتهاء العمل.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                        <button onclick="toggleFaq('faq5')" class="w-full text-right p-5 font-bold text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors">
+                            <span class="text-base sm:text-lg">ما هي المناطق والمدن التي تغطيها خدماتكم؟</span>
+                            <i id="faq5-icon" class="fa-solid fa-chevron-down text-brandOrange-500 transition-transform"></i>
+                        </button>
+                        <div id="faq5" class="hidden p-5 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
+                            نغطي جميع أحياء ومناطق القاهرة والجيزة في جمهورية مصر العربية، بالإضافة إلى فرعنا في دولة الكويت بمحافظة حولي (منطقة الزهراء).
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- COOKIE-FREE PRIVACY POLICY SECTION (سياسة الخصوصية بدون كوكيز) -->
+        <section id="privacy-section" class="py-14 bg-white border-t border-slate-200">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                <div class="bg-slate-50 p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-sm">
+                    <div class="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold mb-4">
+                        <i class="fa-solid fa-user-shield"></i>
+                        <span>حماية وخصوصية تامة (Cookie-Free)</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mb-4">سياسة الخصوصية وأمان البيانات</h2>
+                    <div class="space-y-4 text-slate-600 text-sm leading-relaxed">
+                        <p>
+                            في <strong>Whait Service</strong>، نضع خصوصية الزوار والعملاء على رأس أولوياتنا. هذه السياسة تحدد كيفية تعاملنا مع البيانات في الموقع:
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 pr-2">
+                            <li><strong>عدم استخدام ملفات تعريف الارتباط (No Cookies):</strong> موقعنا لا يستعين بأي ملفات تعريف ارتباط (Cookies) لجمع أو تتبع أي بيانات شخصية أو سلوكية للمستخدمين.</li>
+                            <li><strong>بيانات نموذج الحجز:</strong> البيانات المدخلة في نموذج حجز الصيانة (الاسم، الهاتف، العطل) تُستخدم فقط لتجهيز رسالة المراسلة الفورية عبر تطبيق واتساب ولا يتم حفظها في أي قواعد بيانات خارجية أو بيعها لأي أطراف أخرى.</li>
+                            <li><strong>الشفافية والاستقلالية:</strong> نلتزم بأعلى معايير الشفافية ولا ندّعي أي صفة وكالة أو توكيل تجاري رسمي. نحن مركز صيانة وتجديد أجهزة منزلية مستقل.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT US & LOCATIONS SECTION (تواصل معنا والأفرع) -->
+        <section id="contact-section" class="py-16 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-brandOrange-500 font-bold text-xs uppercase tracking-wide">يسعدنا تواصلكم</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-1">تواصل معنا وعناوين الأفرع</h2>
+                    <p class="text-slate-600 text-sm mt-2">نحن على أتم الاستعداد لاستقبال كافة الاتصالات واستفسارات الصيانة والتجديد</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+                    <!-- Branch 1: Egypt -->
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm relative">
+                        <div class="inline-flex items-center gap-2 bg-brandBlue-100 text-brandBlue-700 px-3 py-1 rounded-full text-xs font-bold mb-4">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>جمهورية مصر العربية</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">فرع مصر (القاهرة والجيزة)</h3>
+                        <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                            تغطية شاملة وفورية لجميع أحياء ومناطق محافظتي القاهرة والجيزة وسرعة وصول الفنيين حتى باب المنزل.
+                        </p>
+
+                        <div class="mt-6 space-y-3 border-t border-slate-100 pt-4">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-headset text-brandOrange-500 text-lg"></i>
+                                <span class="text-slate-700 font-bold text-sm">الخط الساخن:</span>
+                                <a href="tel:19081" class="text-brandBlue-600 font-black text-lg">19081</a>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-whatsapp text-green-500 text-lg"></i>
+                                <span class="text-slate-700 font-bold text-sm">واتساب الخدمة:</span>
+                                <a href="https://wa.me/201102670999" class="text-slate-900 font-bold text-sm">01102670999</a>
+                            </div>
+                            <!-- All 4 Call Icons in Branch Section -->
+                            <div class="pt-2">
+                                <p class="text-xs font-bold text-slate-600 mb-2">أيقونات الاتصال السريع المباشر:</p>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-bold">
+                                    <a href="tel:01035703366" class="bg-emerald-600 text-white p-2.5 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-sm hover:opacity-90">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <span class="dir-ltr">01035703366</span>
+                                    </a>
+                                    <a href="tel:01226439866" class="bg-brandBlue-600 text-white p-2.5 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-sm hover:opacity-90">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <span class="dir-ltr">01226439866</span>
+                                    </a>
+                                    <a href="tel:01227435877" class="bg-brandOrange-500 text-white p-2.5 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-sm hover:opacity-90">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <span class="dir-ltr">01227435877</span>
+                                    </a>
+                                    <a href="tel:01035604477" class="bg-purple-600 text-white p-2.5 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-sm hover:opacity-90">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <span class="dir-ltr">01035604477</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Branch 2: Kuwait -->
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm relative">
+                        <div class="inline-flex items-center gap-2 bg-brandOrange-100 text-brandOrange-700 px-3 py-1 rounded-full text-xs font-bold mb-4">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>دولة الكويت</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">فرع دولة الكويت</h3>
+                        <p class="text-slate-700 text-sm font-semibold mt-2 leading-relaxed">
+                            محافظة حولي، منطقة الزهراء، قطعة 12، شارع 54 <br>
+                            <span class="text-slate-500 text-xs">الرمز البريدي: 47772</span>
+                        </p>
+
+                        <div class="mt-6 space-y-3 border-t border-slate-100 pt-4">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-whatsapp text-green-500 text-lg"></i>
+                                <span class="text-slate-700 font-bold text-sm">واتس اب الاستفسارات:</span>
+                                <a href="https://wa.me/201102670999" class="text-green-600 font-bold text-sm">01102670999</a>
+                            </div>
+                            <!-- All 4 Call Icons for Kuwait / International branch -->
+                            <div class="pt-2">
+                                <p class="text-xs font-bold text-slate-600 mb-2">أيقونات الاتصال لخدمة العملاء:</p>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-bold">
+                                    <a href="tel:01035703366" class="bg-emerald-600 text-white p-2.5 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-sm hover:opacity-90">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <span class="dir-ltr">01035703366</span>
+                                    </a>
+                                    <a href="tel:01226439866" class="bg-brandBlue-600 text-white p-2.5 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-sm hover:opacity-90">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <span class="dir-ltr">01226439866</span>
+                                    </a>
+                                    <a href="tel:01227435877" class="bg-brandOrange-500 text-white p-2.5 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-sm hover:opacity-90">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <span class="dir-ltr">01227435877</span>
+                                    </a>
+                                    <a href="tel:01035604477" class="bg-purple-600 text-white p-2.5 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-sm hover:opacity-90">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <span class="dir-ltr">01035604477</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- SINGLE APPLIANCE PAGE CONTAINER VIEW -->
+    <div id="appliance-page-view" class="hidden flex-grow py-10 bg-slate-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            
+            <button onclick="showMainHome()" class="inline-flex items-center gap-2 bg-slate-900 text-white px-5 py-2.5 rounded-2xl text-sm font-bold shadow-md hover:bg-brandBlue-600 transition-colors mb-6">
+                <i class="fa-solid fa-arrow-right"></i>
+                <span>العودة للصفحة الرئيسية</span>
+            </button>
+
+            <div id="appliance-details-content" class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+                <!-- Dynamic Content Will Be Loaded Here -->
+            </div>
+
+        </div>
+    </div>
+
+    <!-- EXPLICIT INDEPENDENCE DISCLAIMER BOX & FOOTER -->
+    <footer class="bg-slate-900 text-slate-300 pt-12 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Google Ads Mandatory Compliance Disclaimer Box -->
+            <div class="bg-slate-800/90 border-2 border-brandOrange-500/50 p-6 rounded-2xl text-center mb-10 shadow-lg">
+                <h4 class="text-brandOrange-400 font-black text-lg mb-2">
+                    <i class="fa-solid fa-shield-cat ml-2"></i> إقرار وتنويه قانوني هام
+                </h4>
+                <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-4xl mx-auto">
+                    تنويه هام: مركز <strong>Whait Service</strong> هو مركز صيانة وتجديد مستقل تماماً للأجهزة المنزلية، يقدم خدمات الإصلاح والتجميل الفني بشكل حر ومستقل. نؤكد أننا لست تابعين أو ممثلين لأي توكيل تجاري أو أي شركة مصنعة للأجهزة المنزلية بأي شكل من الأشكال.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10 text-sm">
+                
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2 text-white font-black text-xl">
+                        <i class="fa-solid fa-gears text-brandOrange-500"></i>
+                        <span>Whait Service</span>
+                    </div>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        المركز المتخصص في صيانة وتجديد الأجهزة المنزلية بمهارية ودقة فنية عالية.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold mb-3 border-b border-slate-700 pb-2">روابط سريعة</h5>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#home" onclick="showMainHome()" class="hover:text-brandOrange-400 transition-colors">الرئيسية</a></li>
+                        <li><a href="#booking-section" onclick="showMainHome()" class="hover:text-brandOrange-400 transition-colors">حجز صيانة عبر الواتساب</a></li>
+                        <li><a href="#appliances-section" onclick="showMainHome()" class="hover:text-brandOrange-400 transition-colors">قسم الأجهزة المنزلية</a></li>
+                        <li><a href="#privacy-section" onclick="showMainHome()" class="hover:text-brandOrange-400 transition-colors">سياسة الخصوصية بدون كوكيز</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold mb-3 border-b border-slate-700 pb-2">أرقام التواصل</h5>
+                    <ul class="space-y-2 text-xs">
+                        <li>الخط الساخن: <a href="tel:19081" class="text-brandOrange-400 font-bold">19081</a></li>
+                        <li>واتساب: <a href="https://wa.me/201102670999" class="text-green-400 font-bold">01102670999</a></li>
+                        <li>موبايل 1: <span class="text-slate-200 dir-ltr inline-block">01035703366</span></li>
+                        <li>موبايل 2: <span class="text-slate-200 dir-ltr inline-block">01226439866</span></li>
+                        <li>موبايل 3: <span class="text-slate-200 dir-ltr inline-block">01227435877</span></li>
+                        <li>موبايل 4: <span class="text-slate-200 dir-ltr inline-block">01035604477</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold mb-3 border-b border-slate-700 pb-2">فروعنا</h5>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        <strong>مصر:</strong> القاهرة والجيزة <br>
+                        <strong>الكويت:</strong> محافظة حولي، منطقة الزهراء، قطعة 12، شارع 54، الرمز البريدي: 47772
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-500">
+                <p>جميع الحقوق محفوظة © 2026 لـ مركز Whait Service لصيانة وتجديد الأجهزة المنزلية.</p>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- FLOATING QUICK CALL & WHATSAPP WIDGET (BOTTOM CORNER) -->
+    <div class="fixed bottom-3 right-3 left-3 z-50 md:hidden bg-slate-900/95 backdrop-blur-md p-2 rounded-2xl shadow-2xl border border-slate-700 flex items-center justify-around gap-1 text-white">
+        <!-- Hotline -->
+        <a href="tel:19081" class="hotline-neon text-white px-3 py-2 rounded-xl font-black text-sm flex items-center gap-1">
+            <i class="fa-solid fa-headset text-base animate-pulse"></i>
+            <span>19081</span>
+        </a>
+        <!-- Icon 1 -->
+        <a href="tel:01035703366" title="01035703366" class="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-lg shadow-sm">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+        <!-- Icon 2 -->
+        <a href="tel:01226439866" title="01226439866" class="w-10 h-10 bg-brandBlue-600 rounded-xl flex items-center justify-center text-lg shadow-sm">
+            <i class="fa-solid fa-mobile-screen"></i>
+        </a>
+        <!-- Icon 3 -->
+        <a href="tel:01227435877" title="01227435877" class="w-10 h-10 bg-brandOrange-500 rounded-xl flex items-center justify-center text-lg shadow-sm">
+            <i class="fa-solid fa-phone-flip"></i>
+        </a>
+        <!-- Icon 4 -->
+        <a href="tel:01035604477" title="01035604477" class="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center text-lg shadow-sm">
+            <i class="fa-solid fa-headset"></i>
+        </a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/201102670999" target="_blank" title="واتساب" class="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center text-xl shadow-sm">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Desktop Floating Corner Buttons -->
+    <div class="hidden md:flex fixed bottom-5 left-5 z-50 flex-col gap-3">
+        <!-- Floating WhatsApp -->
+        <a href="https://wa.me/201102670999" target="_blank" title="تواصل عبر الواتساب 01102670999" class="w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl transition-transform hover:scale-110">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <!-- Floating Hotline -->
+        <a href="tel:19081" title="اتصل بالخط الساخن 19081" class="w-14 h-14 hotline-neon text-white rounded-full flex items-center justify-center text-2xl shadow-2xl transition-transform hover:scale-110">
+            <i class="fa-solid fa-phone-flip animate-pulse"></i>
+        </a>
+    </div>
+
+
+    <!-- JAVASCRIPT LOGIC & SINGLE PAGE ROUTER -->
+    <script>
+        // Appliance Details Database
+        const appliancesData = {
+            'refrigerators': {
+                title: 'صيانة وتجديد الثلاجات المنزلية',
+                icon: 'fa-temperature-arrow-down',
+                colorClass: 'text-brandBlue-600',
+                bgClass: 'bg-brandBlue-50',
+                image: 'https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=1000&q=80',
+                description: 'نقدم خدمة متكاملة لصيانة وإصلاح كافة أعطال الثلاجات المنزلية بمختلف أحجامها، بالإضافة إلى التجديد والرش الشامل للهيكل الخارجي والداخلي.',
+                faults: [
+                    'ضعف التبريد أو توقف التجميد في الفريزر',
+                    'تسريب مياه أسفل الثلاجة أو داخل الأرفف',
+                    'أصوات عالية أو اهتزاز غير طبيعي في الكمبروسر',
+                    'تكوين ثلج كثيف في ثلاجات النوفروست',
+                    'تآكل الصاج ووجود بارومة في الباب أو القواعد'
+                ],
+                process: [
+                    'فحص فني شامل للدوائر الكهربائية وغاز التبريد.',
+                    'شحن الفريون الأصلي ومعالجة أي تسريب بالحامات النحاسية.',
+                    'تغيير التايمر، الثرموستات، أو الثرموديسك للتغلب على تكوين الثلج.',
+                    'خدمة تجديد الهيكل: سنفرة الصدأ، دهان معالج، ورش حراري مقاوم للرطوبة.'
+                ]
+            },
+            'washing-machines': {
+                title: 'صيانة وتجديد الغسالات الأوتوماتيك',
+                icon: 'fa-soap',
+                colorClass: 'text-indigo-600',
+                bgClass: 'bg-indigo-50',
+                image: 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1000&q=80',
+                description: 'صيانة متخصصة لكافة مشاكل وبرامج الغسالات الأوتوماتيك والهاف أوتوماتيك مع معالجة الاهتزاز الصدأ والتجديد الكامل.',
+                faults: [
+                    'عدم عصر الملابس أو توقف العصر مفاجئاً',
+                    'عدم صرف المياه أو عدم سحب المياه للغسيل',
+                    'صوت صرير شديد أثناء دوران الحلة (رولمان بلي)',
+                    'توقف كارتة التحكم أو عدم استجابة الأزرار',
+                    'صدأ وبارومة في جسم الغسالة الخارجي والقاعدة'
+                ],
+                process: [
+                    'استبدال رولمان البلي والمساعدين المتهالكين لإنهاء الاهتزاز.',
+                    'صيانة وإصلاح كارتات التشغيل الإلكترونية بدقة.',
+                    'استبدال طلمبات الصرف ومساعدين الحلة.',
+                    'التجديد الشامل: معالجة بارومة الصاج وإعادة الدهان بنفس المظهر المعتاد.'
+                ]
+            },
+            'deep-freezers': {
+                title: 'صيانة وتجديد الديب فريزر',
+                icon: 'fa-snowflake',
+                colorClass: 'text-cyan-600',
+                bgClass: 'bg-cyan-50',
+                image: 'https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=1000&q=80',
+                description: 'خدمات صيانة الديب فريزر الراسي والأفقي وإصلاح مشاكل التجميد والتسريب والتجديد الشامل.',
+                faults: [
+                    'توقف التجميد التام أو ذوبان الأطعمة',
+                    'إنذار درجة الحرارة مستمر (Alarm)',
+                    'تراكم الثلج بكثافة يعيق إغلاق الأدراج',
+                    'تآكل الجوان المطاطي وتسريب الهواء'
+                ],
+                process: [
+                    'إصلاح وتسليك المواعين الداخلية ودوائر النوفروست.',
+                    'تغيير الكاوتشوك والجوان لضمان العزل الحراري التام.',
+                    'شحن الغاز ومعالجة الثرموستات.',
+                    'سمكرة وتجديد الدهان الخارجي للديب فريزر.'
+                ]
+            },
+            'dryers': {
+                title: 'صيانة وتجديد المجففات (الدراير)',
+                icon: 'fa-wind',
+                colorClass: 'text-amber-600',
+                bgClass: 'bg-amber-50',
+                image: 'https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=1000&q=80',
+                description: 'خدمة دقيقة لمجففات الملابس الكهربائية لحل مشاكل التسخين والدوران والتجفيف.',
+                faults: [
+                    'المجفف يعمل بدون إخراج هواء ساخن (الملابس تظل مبتلة)',
+                    'انقطاع سير الدوران أو توقف الحلة',
+                    'ارتفاع غير طبيعي في حرارة المجفف'
+                ],
+                process: [
+                    'اختبار وتغيير الهيتر (عنصر التسخين) والحساسات.',
+                    'استبدال سير الدوران وسوست المحرك.',
+                    'تنظيف وتنقية الفلاتر ومسارات الهواء.',
+                    'تجديد المظهر الخارجي وإزالة الخدوش والصدأ.'
+                ]
+            },
+            'dishwashers': {
+                title: 'صيانة وتجديد غسالات الأطباق',
+                icon: 'fa-utensils',
+                colorClass: 'text-teal-600',
+                bgClass: 'bg-teal-50',
+                image: 'https://images.unsplash.com/photo-1585837575652-267c041d77d4?auto=format&fit=crop&w=1000&q=80',
+                description: 'صيانة شاملة لغسالات الأطباق ومعالجة انسداد المائي، طلمبات السحب، والأعطال البرمجية.',
+                faults: [
+                    'عدم تنظيف الأطباق بشكل جيد',
+                    'تسريب مياه من أسفل باب الغسالة',
+                    'توقف طلمبة سحب أو ضخ المياه'
+                ],
+                process: [
+                    'تسليك وتنظيف الرشاشات وتغيير الفلاتر.',
+                    'تغيير طلمبة الضخ وصمامات المياه.',
+                    'إصلاح مشاكل الهيتر وسخان المياه.'
+                ]
+            },
+            'cookers': {
+                title: 'صيانة وتجديد البوتاجازات والأفران',
+                icon: 'fa-fire-burner',
+                colorClass: 'text-brandOrange-600',
+                bgClass: 'bg-orange-50',
+                image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1000&q=80',
+                description: 'خدمة تجديد وصيانة البوتاجازات والأفران المنزلية وتسليك الفواني وتغيير مفصلات الأبواب.',
+                faults: [
+                    'ضعف الشعلات أو خروج نار سوداء',
+                    'عطل الإشعال الذاتي أو الشواية',
+                    'عدم إغلاق باب الفرن بإحكام'
+                ],
+                process: [
+                    'تسليك الفواني وتعديل ضغط الغاز.',
+                    'استبدال الإشعال الذاتي ومفصلات الفرن.',
+                    'تجديد شامل: تنظيف الشحومات وتلميع وإعادة طلاء الشاسيه.'
+                ]
+            },
+            'heaters': {
+                title: 'صيانة وتجديد سخانات المياه',
+                icon: 'fa-droplet',
+                colorClass: 'text-rose-600',
+                bgClass: 'bg-rose-50',
+                image: 'https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&w=1000&q=80',
+                description: 'صيانة سخانات الكهرباء والغاز ومعالجة تسريبات المياه وتغيير العناصر التالفة.',
+                faults: [
+                    'عدم تسخين المياه أو انخفاض الحرارة',
+                    'تسريب مياه من الخزان أو الصمام',
+                    'انطفاء شعلة سخان الغاز فوراً'
+                ],
+                process: [
+                    'تغيير الهيتر (عنصر التسخين) والثرموستات.',
+                    'صيانة واستبدال جلدة الرداخ وصمام الأمان.',
+                    'تنظيف الترسبات الكلسية داخل الخزان.'
+                ]
+            }
+        };
+
+        // Form Submit Handler (Formats message and opens WhatsApp)
+        function handleWhatsAppSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const appliance = document.getElementById('custAppliance').value;
+            const location = document.getElementById('custLocation').value;
+            const desc = document.getElementById('custDesc').value.trim();
+
+            const textMsg = `السلام عليكم، أرغب في حجز طلب صيانة/تجديد مع مركز Whait Service:\n\n` +
+                            `👤 الاسم: ${name}\n` +
+                            `📱 الهاتف: ${phone}\n` +
+                            `⚙️ نوع الجهاز: ${appliance}\n` +
+                            `📍 المنطقة/النطاق: ${location}\n` +
+                            `📝 وصف العطل: ${desc}\n\n` +
+                            `يرجى التواصل معي لتأكيد الموعد.`;
+
+            const encodedMsg = encodeURIComponent(textMsg);
+            const whatsappUrl = `https://wa.me/201102670999?text=${encodedMsg}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Accordion Toggle
+        function toggleFaq(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById(id + '-icon');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Show Main Home View
+        function showMainHome() {
+            document.getElementById('main-content-view').classList.remove('hidden');
+            document.getElementById('appliance-page-view').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Open Appliance Detailed View with Routing
+        function openAppliancePage(key) {
+            const item = appliancesData[key];
+            if (!item) return;
+
+            const container = document.getElementById('appliance-details-content');
+            
+            let faultsList = item.faults.map(f => `<li class="flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-brandOrange-500 text-xs"></i> <span>${f}</span></li>`).join('');
+            let processList = item.process.map(p => `<li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-emerald-500 mt-1 text-xs"></i> <span>${p}</span></li>`).join('');
+
+            const waDirectLink = `https://wa.me/201102670999?text=${encodeURIComponent('السلام عليكم، أرغب في طلب صيانة/تجديد لـ: ' + item.title)}`;
+
+            container.innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+                    <div class="lg:col-span-5 relative bg-slate-100">
+                        <img src="${item.image}" alt="${item.title}" class="w-full h-full min-h-[300px] object-cover" onerror="this.src='https://placehold.co/600x800/0F4C81/FFFFFF?text=Whait+Service'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex items-end p-6">
+                            <span class="text-white font-black text-xl">${item.title}</span>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 p-6 sm:p-10 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="px-4 py-1 rounded-full text-xs font-bold ${item.bgClass} ${item.colorClass}">
+                                قسم صيانة وتجديد متكالمة
+                            </span>
+                            <span class="text-xs font-bold text-slate-400">مركز Whait Service</span>
+                        </div>
+
+                        <h1 class="text-2xl sm:text-3xl font-black text-slate-900">${item.title}</h1>
+                        <p class="text-slate-600 text-sm leading-relaxed">${item.description}</p>
+
+                        <div class="space-y-3 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                            <h4 class="font-bold text-slate-900 text-sm">أبرز الأعطال والمشاكل التي نعالجها:</h4>
+                            <ul class="text-xs text-slate-700 space-y-2">
+                                ${faultsList}
+                            </ul>
+                        </div>
+
+                        <div class="space-y-3 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                            <h4 class="font-bold text-slate-900 text-sm">خطوات الصيانة والتجديد لدينا:</h4>
+                            <ul class="text-xs text-slate-700 space-y-2">
+                                ${processList}
+                            </ul>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-4">
+                            <a href="${waDirectLink}" target="_blank" class="flex-1 bg-green-500 hover:bg-green-600 text-white font-extrabold py-3 px-6 rounded-xl text-center shadow-md flex items-center justify-center gap-2 text-sm transition-all">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                                <span>حجز صيانة ${item.title} عبر الواتساب</span>
+                            </a>
+                            <a href="tel:19081" class="bg-brandOrange-500 hover:bg-brandOrange-600 text-white font-extrabold py-3 px-6 rounded-xl text-center shadow-md flex items-center justify-center gap-2 text-sm transition-all">
+                                <i class="fa-solid fa-phone"></i>
+                                <span>الخط الساخن 19081</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('main-content-view').classList.add('hidden');
+            document.getElementById('appliance-page-view').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Simple Router Hash Change Listener
+        window.addEventListener('hashchange', function() {
+            const hash = window.location.hash;
+            if (hash.startsWith('#appliance-')) {
+                const applianceKey = hash.replace('#appliance-', '');
+                openAppliancePage(applianceKey);
+            } else if (hash === '#home' || hash === '') {
+                showMainHome();
+            }
+        });
+    </script>
+</body>
+</html>
+    <!-- FLOATING CONTACT STACK ON THE LEFT SIDE (تحت بعضها: الخط الساخن ثم الواتس ثم الأرقام الاربعة بألوان مختلفة) -->
+    <div class="fixed left-2 sm:left-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2 max-w-[170px] sm:max-w-[200px]">
+        
+        <!-- 1. TOP OF STACK: Hotline 19081 -->
+        <a href="tel:19081" title="الخط الساخن 19081" 
+           class="hotline-neon text-white p-2.5 sm:p-3 rounded-2xl flex items-center justify-between shadow-2xl transition-all hover:scale-105 border-2 border-white/20">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-headset text-xl sm:text-2xl animate-pulse"></i>
+                <div class="flex flex-col text-right">
+                    <span class="text-[9px] font-bold opacity-90 hidden sm:inline">الخط الساخن</span>
+                    <span class="text-base sm:text-xl font-black dir-ltr leading-tight">19081</span>
+                </div>
+            </div>
+            <i class="fa-solid fa-phone text-xs opacity-75"></i>
+        </a>
+
+        <!-- 2. DIRECTLY BELOW HOTLINE: WhatsApp -->
+        <a href="https://wa.me/201102670999" target="_blank" title="واتساب 01102670999" 
+           class="bg-green-600 hover:bg-green-700 text-white p-2.5 sm:p-3 rounded-2xl flex items-center justify-between shadow-2xl transition-all hover:scale-105 border-2 border-white/20">
+            <div class="flex items-center gap-2">
+                <i class="fa-brands fa-whatsapp text-xl sm:text-2xl text-green-200"></i>
+                <div class="flex flex-col text-right">
+                    <span class="text-[9px] font-bold text-green-100 hidden sm:inline">واتساب الخدمة</span>
+                    <span class="text-xs sm:text-sm font-black dir-ltr leading-tight">01102670999</span>
+                </div>
+            </div>
+            <i class="fa-solid fa-chevron-left text-xs opacity-75"></i>
+        </a>
+
+        <!-- 3. DIRECTLY BELOW WHATSAPP: THE 4 MOBILE CALL ICONS IN DIFFERENT COLORS -->
+        
+        <!-- Mobile 1: Emerald Green -->
+        <a href="tel:01035703366" title="اتصل بـ 01035703366" 
+           class="bg-emerald-600 hover:bg-emerald-700 text-white p-2 sm:p-2.5 rounded-xl flex items-center justify-between shadow-lg transition-transform hover:scale-105">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-phone text-xs sm:text-sm"></i>
+                <span class="text-xs sm:text-sm font-black dir-ltr">01035703366</span>
+            </div>
+            <span class="w-2 h-2 rounded-full bg-emerald-300"></span>
+        </a>
+
+        <!-- Mobile 2: Royal Blue -->
+        <a href="tel:01226439866" title="اتصل بـ 01226439866" 
+           class="bg-brandBlue-600 hover:bg-brandBlue-700 text-white p-2 sm:p-2.5 rounded-xl flex items-center justify-between shadow-lg transition-transform hover:scale-105">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-mobile-screen text-xs sm:text-sm"></i>
+                <span class="text-xs sm:text-sm font-black dir-ltr">01226439866</span>
+            </div>
+            <span class="w-2 h-2 rounded-full bg-blue-300"></span>
+        </a>
+
+        <!-- Mobile 3: Vibrant Orange -->
+        <a href="tel:01227435877" title="اتصل بـ 01227435877" 
+           class="bg-brandOrange-500 hover:bg-brandOrange-600 text-white p-2 sm:p-2.5 rounded-xl flex items-center justify-between shadow-lg transition-transform hover:scale-105">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-phone-flip text-xs sm:text-sm"></i>
+                <span class="text-xs sm:text-sm font-black dir-ltr">01227435877</span>
+            </div>
+            <span class="w-2 h-2 rounded-full bg-orange-300"></span>
+        </a>
+
+        <!-- Mobile 4: Purple -->
+        <a href="tel:01035604477" title="اتصل بـ 01035604477" 
+           class="bg-purple-600 hover:bg-purple-700 text-white p-2 sm:p-2.5 rounded-xl flex items-center justify-between shadow-lg transition-transform hover:scale-105">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-headset text-xs sm:text-sm"></i>
+                <span class="text-xs sm:text-sm font-black dir-ltr">01035604477</span>
+            </div>
+            <span class="w-2 h-2 rounded-full bg-purple-300"></span>
+        </a>
+
+    </div>
+
+</body>
+</html>
